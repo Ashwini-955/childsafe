@@ -13,6 +13,50 @@
       background-color: #ffffff;
       color: #333333;
     }
+/* Navbar */
+    .navbar {
+      background-color: #004d40;
+      padding: 1rem 0;
+      color: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .navbar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #fff;
+      font-weight: 500;
+    }
+
+    .nav-links a.active {
+      border-bottom: 2px solid #fff;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
 
     header {
       background-color: #004d40; /* Deep Blue */
