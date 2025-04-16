@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NGO Login - ChildSafe</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    /* Base Styles */
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      background-color:#f9f9f9; /* Light Blue Background */
+      color: #333;
+    }
+
+    header {
+      background-color:#004d40; /* Blue Header */
+      color: #fff;
+      padding: 30px 0;
+      text-align: center;
+    }
+    .btn {
+  background-color: #004d40;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  width: 500px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.btn:hover {
+  background-color: #00695c;
+}
+/* Responsive adjustment */
+@media (max-width: 500px) {
+  .btn {
+    width: 100%;
+  }
+}
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 250px;       /* smaller width */
+  padding: 8px;       /* reduced padding */
+  font-size: 14px;    /* smaller font */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Responsive: full width on mobile */
+@media (max-width: 500px) {
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    width: 100%;
+  }
+}
+
+    header h1 {
+      font-size: 2.5em;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: #ffffff; /* White background for form */
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      font-weight: bold;
+      color: #004d40;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px;
+      font-size: 1em;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-top: 5px;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-group input:focus {
+      border-color: #004d40;
+      outline: none;
+    }
+
+    .form-group button {
+      width: 100%;
+      padding: 12px;
+      background-color: #004d40; /* Blue Button */
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1em;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .form-group button:hover {
+      background-color: #004d40;
+    }
+
+    .footer {
+      background-color: #004d40; /* Blue Footer */
+      color: white;
+      text-align: center;
+      padding: 20px;
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+    }
+
+    .footer a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2em;
+      }
+
+      .container {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>NGO Login</h1>
+  </header>
+
+  <main class="container">
+    <form id="ngo-login-form">
+      <div class="form-group">
+        <label for="ngo-name">NGO Name</label>
+        <input type="text" id="ngo-name" name="ngo-name" placeholder="Enter your NGO name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+      </div>
+
+      <div class="form-group">
+        <a href="home.html" class="btn">Login</a>
+
+      </div>
+    </form>
+  </main>
+
+  <footer class="footer">
+    <p>Not registered? <a href="ngo-signup.html">Create an account</a></p>
+  </footer>
+
+  <script>
+    document.getElementById('ngo-login-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const ngoName = document.getElementById('ngo-name').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      if (ngoName && email && password) {
+        alert('Login successful!');
+        // Implement actual login logic here (like checking credentials)
+      } else {
+        alert('Please fill in all fields.');
+      }
+    });
+  </script>
+</body>
+</html>

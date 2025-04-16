@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChildSafe - Report a Case</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Base Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #004d40;
+    padding: 1rem 0;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: white;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    color: white;
+    font-weight: 500;
+}
+
+.nav-links a.active {
+    border-bottom: 2px solid white;
+}
+
+.hamburger {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Page Header */
+.page-header {
+    background-color: #e0f2f1;
+    padding: 3rem 1rem;
+    text-align: center;
+}
+
+.page-header h1 {
+    color: #004d40;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.page-header p {
+    color: #333;
+    max-width: 700px;
+    margin: auto;
+}
+
+/* Report Section */
+.report-section {
+    padding: 3rem 1rem;
+    background-color: #fff;
+}
+
+.report-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.report-info, .complaint-form {
+    flex: 1;
+    min-width: 300px;
+}
+
+/* Info Boxes */
+.info-box {
+    display: flex;
+    align-items: flex-start;
+    background-color: #e0f2f1;
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.info-icon {
+    font-size: 2rem;
+    color: #004d40;
+    margin-right: 1rem;
+}
+
+/* Form */
+form {
+    background: #e0f2f1;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 0.7rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+}
+
+textarea {
+    min-height: 100px;
+}
+
+.file-upload {
+    border: 2px dashed #009688;
+    padding: 2rem;
+    text-align: center;
+    border-radius: 10px;
+    color: #555;
+    cursor: pointer;
+    background-color: #fff;
+}
+
+.file-upload i {
+    font-size: 2rem;
+    color: #004d40;
+}
+
+.file-info {
+    font-size: 0.85rem;
+    color: #777;
+}
+
+.upload-preview {
+    margin-top: 1rem;
+}
+
+.form-check {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-primary {
+    background-color: #004d40;
+    color: white;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    margin-top: 1rem;
+}
+
+.btn-primary:hover {
+    background-color: #00695c;
+}
+
+/* Process Section */
+.process-section {
+    background-color: #f1f1f1;
+    padding: 3rem 1rem;
+}
+
+.section-title {
+    text-align: center;
+    color: #004d40;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.process-timeline {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.timeline-item {
+    background: #ffffff;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    text-align: center;
+}
+
+.timeline-icon {
+    font-size: 2rem;
+    color: #00796b;
+    margin-bottom: 1rem;
+}
+
+/* Emergency Section */
+.emergency-section {
+    background-color: #ffebee;
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+.emergency-box {
+    background: #ffcdd2;
+    padding: 2rem;
+    border-radius: 10px;
+    display: inline-block;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.emergency-icon {
+    font-size: 2.5rem;
+    color: #c62828;
+    margin-bottom: 1rem;
+}
+
+.emergency-number {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #b71c1c;
+    margin-top: 1rem;
+}
+
+/* Footer */
+footer {
+    background-color: #004d40;
+    color: white;
+    padding: 2rem 1rem;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 220px;
+}
+
+.footer-column h3 {
+    margin-bottom: 1rem;
+}
+
+.footer-links {
+    list-style: none;
+    padding-left: 0;
+}
+
+.footer-links li {
+    margin-bottom: 0.5rem;
+}
+
+.social-links a {
+    margin-right: 1rem;
+    color: white;
+    font-size: 1.2rem;
+}
+
+/* Animations */
+.animate-fadeIn {
+    animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: #004d40;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    .hamburger {
+        display: block;
+        color: white;
+    }
+
+    .report-container {
+        flex-direction: column;
+    }
+
+    .footer-content {
+        flex-direction: column;
+    }
+}
+
+    </style>
+</head>
+<body>
+    
+    
+    <!-- Main Content -->
+    <main>
+        <div class="page-header">
+            <div class="container">
+                <h1>Report Child Labor Case</h1>
+                <p>Your information could save a child's future. All reports are kept confidential.</p>
+            </div>
+        </div>
+        
+        <section class="report-section">
+            <div class="container">
+                <div class="report-container">
+                    <div class="report-info animate-fadeIn">
+                        <h2>Why Report?</h2>
+                        <div class="info-box">
+                            <div class="info-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="info-content">
+                                <h3>You're Protecting a Child</h3>
+                                <p>Children in labor situations are often subjected to physical and psychological harm. Your report can get them to safety.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-box">
+                            <div class="info-icon">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <div class="info-content">
+                                <h3>Education, Not Labor</h3>
+                                <p>Every child deserves an education and a childhood free from exploitation. Your report helps make this possible.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-box">
+                            <div class="info-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <div class="info-content">
+                                <h3>100% Confidential</h3>
+                                <p>Your identity is protected. You can choose to remain anonymous when filing a report.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-box">
+                            <div class="info-icon">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <div class="info-content">
+                                <h3>Quick Response</h3>
+                                <p>Our team works with local authorities to investigate reports and take appropriate action swiftly.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="complaint-form animate-fadeIn">
+                        <h2>Case Details</h2>
+                        <form id="report-form">
+                            <div class="form-group">
+                                <label for="name">Your Name (Optional)</label>
+                                <input type="text" class="form-control" id="name" placeholder="Enter your name">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Your Email (Optional)</label>
+                                <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Your Phone (Optional)</label>
+                                <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="location">Incident Location*</label>
+                                <input type="text" class="form-control" id="location" placeholder="Enter the location of the incident" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="children">Number of Children*</label>
+                                <input type="number" class="form-control" id="children" min="1" placeholder="Approximate number of children involved" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="activity">Type of Activity/Industry*</label>
+                                <select class="form-control" id="activity" required>
+                                    <option value="" selected disabled>Select type of activity</option>
+                                    <option value="factory">Factory/Manufacturing</option>
+                                    <option value="agriculture">Agriculture/Farming</option>
+                                    <option value="domestic">Domestic Work</option>
+                                    <option value="street">Street Vending/Begging</option>
+                                    <option value="mining">Mining/Quarrying</option>
+                                    <option value="construction">Construction</option>
+                                    <option value="restaurant">Restaurant/Hospitality</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="description">Description of the Situation*</label>
+                                <textarea class="form-control" id="description" placeholder="Please provide detailed information about what you observed..." required></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="image-upload">Upload Images (Optional)</label>
+                                <div class="file-upload" id="file-upload">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <p>Drag & drop images here or click to browse</p>
+                                    <span class="file-info">Maximum 5 images, 10MB each</span>
+                                    <input type="file" id="image-upload" accept="image/*" multiple>
+                                </div>
+                                <div class="upload-preview" id="upload-preview"></div>
+                            </div>
+                            
+                            <div class="form-check">
+                                <input type="checkbox" id="anonymous" class="form-check-input">
+                                <label for="anonymous" class="form-check-label">Submit anonymously</label>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">Submit Report</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="process-section">
+            <div class="container">
+                <h2 class="section-title">What Happens After You Report</h2>
+                <div class="process-timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-icon">
+                            <i class="fas fa-clipboard-check"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>Case Review</h3>
+                            <p>Our team reviews your report within 24 hours and categorizes it based on urgency and severity.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>Investigation</h3>
+                            <p>We coordinate with local partners and authorities to investigate the reported situation.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-icon">
+                            <i class="fas fa-running"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>Rescue Operation</h3>
+                            <p>If child labor is confirmed, a rescue operation is planned and executed to remove children from harm.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-icon">
+                            <i class="fas fa-hand-holding-heart"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>Rehabilitation</h3>
+                            <p>Rescued children receive medical care, counseling, and are enrolled in educational programs.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-icon">
+                            <i class="fas fa-gavel"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>Legal Action</h3>
+                            <p>Legal proceedings against perpetrators are initiated through appropriate channels.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="emergency-section">
+            <div class="container">
+                <div class="emergency-box">
+                    <div class="emergency-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="emergency-content">
+                        <h3>For Immediate Assistance</h3>
+                        <p>If you witness a situation that requires immediate intervention to prevent harm to a child, please call our 24/7 emergency helpline:</p>
+                        <div class="emergency-number">1800 123 4567</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>About Us</h3>
+                    <p>ChildSafe is dedicated to the elimination of child labor through awareness, advocacy, and action. We work with communities, governments, and organizations to create lasting change.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Handle form submission
+const reportForm = document.getElementById("report-form");
+const submitButton = document.querySelector(".btn-primary");
+
+submitButton.addEventListener("click", function(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    // Collect form data (Optional: you can log or process this data further if needed)
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const phone = document.getElementById("phone").value;
+    const location = document.getElementById("location").value;
+    const children = document.getElementById("children").value;
+    const activity = document.getElementById("activity").value;
+    const description = document.getElementById("description").value;
+    const anonymous = document.getElementById("anonymous").checked;
+
+    // Log the form data (for debugging or further processing)
+    console.log({
+        name,
+        email,
+        phone,
+        location,
+        children,
+        activity,
+        description,
+        anonymous
+    });
+
+    // Display alert after submission
+    alert("Your complaint has been received. Thank you for reporting!");
+
+    // Reset the form after submission
+    reportForm.reset();
+});
+
+    </script>
+</body>
+</html>
