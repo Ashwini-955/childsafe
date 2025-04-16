@@ -353,5 +353,40 @@
       document.getElementById("nav-links").classList.toggle("show");
     });
   </script>
+
+  <!-- Chatbot Button -->
+<button id="chatbot-btn" title="Chat with us">
+  💬
+</button>
+
+<!-- Chatbot Script -->
+<script>
+  document.getElementById("chatbot-btn").addEventListener("click", () => {
+    alert("Chatbot coming soon!"); // Replace with chatbot popup or link
+  });
+</script>
+
+<style>
+  #chatbot-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #004d40;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    z-index: 9999;
+  }
+
+  #chatbot-btn:hover {
+    background-color: #00695c;
+  }
+</style>
+
 </body>
 </html>
