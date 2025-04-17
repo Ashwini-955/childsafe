@@ -116,7 +116,7 @@
     /* News Section */
     .news-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr); /* 3 columns */
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 2rem;
     }
 
@@ -187,15 +187,57 @@
       margin-bottom: 0.5rem;
     }
 
-    footer .social-links a {
+    .footer-links a {
+      color: #fff;
+    }
+
+    .footer-form input {
+      padding: 0.5rem;
+      width: 70%;
+      border: none;
+      border-radius: 3px;
+      margin-right: 0.5rem;
+    }
+
+    .footer-form button {
+      padding: 0.5rem 1rem;
+      border: none;
+      background-color: #00695c;
+      color: #fff;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    .social-links a {
       margin-right: 1rem;
       color: #fff;
       font-size: 1.2rem;
     }
 
-    footer .copyright {
+    .copyright {
       margin-top: 1rem;
       text-align: center;
+    }
+
+    /* Chatbot Button */
+    #chatbot-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #004d40;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      z-index: 9999;
+    }
+
+    #chatbot-btn:hover {
+      background-color: #00695c;
     }
 
     /* Responsive */
@@ -230,20 +272,16 @@
       .footer-content {
         flex-direction: column;
       }
-
-      .news-grid {
-        grid-template-columns: 1fr; /* 1 column on small screens */
-      }
     }
   </style>
 </head>
 <body>
   <nav class="navbar">
     <div class="container">
-      <a href="#" class="logo"><i class="fas fa-child"></i>ChildSafe</a>
+      <a href="#" class="logo" aria-label="ChildSafe Home"><i class="fas fa-child"></i>ChildSafe</a>
       <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
       <ul class="nav-links" id="nav-links">
-        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html" class="active">Home</a></li>
         <li><a href="complain.html">Report</a></li>
         <li><a href="donation.html">Donate</a></li>
         <li><a href="contact.html">Contact</a></li>
@@ -261,49 +299,43 @@
   <section class="container">
     <h2 class="section-title">Latest News</h2>
     <div class="news-grid">
-      <!-- News Card 1 -->
       <div class="news-card">
-        <img src="child1.jpeg" alt="News" class="news-img">
+        <img src="child1.jpeg" alt="Policy against child labor">
         <div class="news-content">
           <h3>New Policy to Stop Child Labor</h3>
           <p>Government introduces strict measures against child labor nationwide.</p>
         </div>
       </div>
-      <!-- News Card 2 -->
       <div class="news-card">
-        <img src="child 2.jpeg" alt="News" class="news-img">
+        <img src="child 2.jpeg" alt="Rescued children">
         <div class="news-content">
           <h3>Rescued and Rehabilitated</h3>
           <p>30 children rescued and admitted to care centers this month.</p>
         </div>
       </div>
-      <!-- News Card 3 -->
       <div class="news-card">
-        <img src="child3.jpeg" alt="News" class="news-img">
+        <img src="child3.jpeg" alt="International day against child labor">
         <div class="news-content">
           <h3>International Day Against Child Labor</h3>
           <p>Communities worldwide unite to raise awareness.</p>
         </div>
       </div>
-      <!-- News Card 4 -->
       <div class="news-card">
-        <img src="child4.jpeg" alt="News" class="news-img">
+        <img src="child4.jpeg" alt="NGO campaign success">
         <div class="news-content">
           <h3>NGO Campaign Success</h3>
           <p>Successful campaigns led to rescuing over 100 children.</p>
         </div>
       </div>
-      <!-- News Card 5 -->
       <div class="news-card">
-        <img src="child5.jpeg" alt="News" class="news-img">
+        <img src="child5.jpeg" alt="Education for children">
         <div class="news-content">
           <h3>New Educational Initiative</h3>
           <p>Thousands of children now have access to free education programs.</p>
         </div>
       </div>
-      <!-- News Card 6 -->
       <div class="news-card">
-        <img src="child6.jpeg" alt="News" class="news-img">
+        <img src="child6.jpeg" alt="Community actions against child labor">
         <div class="news-content">
           <h3>Breaking the Chains</h3>
           <p>Local community organizations successfully reduce child labor in rural areas.</p>
@@ -348,45 +380,16 @@
     </div>
   </footer>
 
+  <button id="chatbot-btn" title="Chat with us" aria-label="Chatbot Button">💬</button>
+
   <script>
     document.getElementById("hamburger").addEventListener("click", () => {
       document.getElementById("nav-links").classList.toggle("show");
     });
+
+    document.getElementById("chatbot-btn").addEventListener("click", () => {
+      window.location.href = "http://127.0.0.1:5001";
+    });
   </script>
-
-  <!-- Chatbot Button -->
-<button id="chatbot-btn" title="Chat with us">
-  💬
-</button>
-
-<!-- Chatbot Script -->
-<script>
-  document.getElementById("chatbot-btn").addEventListener("click", () => {
-    alert("Chatbot coming soon!"); // Replace with chatbot popup or link
-  });
-</script>
-
-<style>
-  #chatbot-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #004d40;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 55px;
-    height: 55px;
-    font-size: 24px;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    z-index: 9999;
-  }
-
-  #chatbot-btn:hover {
-    background-color: #00695c;
-  }
-</style>
-
 </body>
 </html>
