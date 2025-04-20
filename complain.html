@@ -16,58 +16,10 @@ body {
     line-height: 1.6;
 }
 
-
-
 .container {
     width: 90%;
     max-width: 1200px;
     margin: auto;
-}
-
-/* Navbar */
-.navbar {
-    background-color: #004d40;
-    padding: 1rem 0;
-    color: white;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-
-.navbar .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: white;
-}
-
-.navbar .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 1.5rem;
-}
-
-.nav-links a {
-    color: white;
-    font-weight: 500;
-}
-
-.nav-links a.active {
-    border-bottom: 2px solid white;
-}
-
-.hamburger {
-    display: none;
-    font-size: 1.5rem;
-    cursor: pointer;
 }
 
 /* Page Header */
@@ -307,27 +259,7 @@ footer {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        background-color: #004d40;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        padding: 1rem;
-    }
 
-    .nav-links.show {
-        display: flex;
-    }
-
-    .hamburger {
-        display: block;
-        color: white;
-    }
 
     .report-container {
         flex-direction: column;
@@ -336,14 +268,142 @@ footer {
     .footer-content {
         flex-direction: column;
     }
+      /* Navbar Styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #004d40;
+  color: white;
+  padding: 15px 20px;
+  flex-wrap: wrap;
 }
+
+.navbar-logo {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 20px;
+}
+
+.navbar-links a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 12px;
+  font-weight: 500;
+  border-radius: 5px;
+}
+
+/* Navbar Styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #004d40;
+  color: white;
+  padding: 15px 20px;
+  flex-wrap: wrap;
+}
+
+.navbar-logo {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 20px;
+}
+
+.navbar-links a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 12px;
+  font-weight: 500;
+  border-radius: 5px;
+}
+
+
+
+.hamburger {
+  display: none;
+  font-size: 1.8em;
+  cursor: pointer;
+  color: white;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .navbar-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .navbar-links.show {
+    display: flex;
+  }
+
+  .navbar-links a {
+    padding: 10px 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+
+.hamburger {
+  display: none;
+  font-size: 1.8em;
+  cursor: pointer;
+  color: white;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .navbar-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .navbar-links.show {
+    display: flex;
+  }
+
+  .navbar-links a {
+    padding: 10px 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
 
     </style>
 </head>
-<body>
-   
-  </nav>
-    
+<body>  
+    <nav class="navbar">
+        <div class="navbar-logo">ChildSafe</div>
+        <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+        <div class="navbar-links" id="navbarLinks">
+          <a href="index.html">Home</a>
+          <a href="complain.html">Report</a>
+          <a href="donation.html">Donate</a>
+          <a href="contact.html">Contact</a>
+          <a href="login.html" class="active">NGOs Login</a>
+        </div>
+      </nav>
     <!-- Main Content -->
     <main>
         <div class="page-header">
@@ -594,6 +654,11 @@ submitButton.addEventListener("click", function(event) {
     // Reset the form after submission
     reportForm.reset();
 });
+
+        function toggleMenu() {
+          document.getElementById("navbarLinks").classList.toggle("show");
+        }
+    
 
     </script>
 </body>
