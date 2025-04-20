@@ -100,11 +100,145 @@
         font-size: 1.5em;
       }
     }
+  /* Navbar Styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #004d40;
+  color: white;
+  padding: 15px 20px;
+  flex-wrap: wrap;
+}
+
+.navbar-logo {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 20px;
+}
+
+.navbar-links a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 12px;
+  font-weight: 500;
+  border-radius: 5px;
+}
+
+/* Navbar Styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #004d40;
+  color: white;
+  padding: 15px 20px;
+  flex-wrap: wrap;
+}
+
+.navbar-logo {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 20px;
+}
+
+.navbar-links a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 12px;
+  font-weight: 500;
+  border-radius: 5px;
+}
+
+
+
+.hamburger {
+  display: none;
+  font-size: 1.8em;
+  cursor: pointer;
+  color: white;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .navbar-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .navbar-links.show {
+    display: flex;
+  }
+
+  .navbar-links a {
+    padding: 10px 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+
+.hamburger {
+  display: none;
+  font-size: 1.8em;
+  cursor: pointer;
+  color: white;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .navbar-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .navbar-links.show {
+    display: flex;
+  }
+
+  .navbar-links a {
+    padding: 10px 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+
     
   </style>
 </head>
 <body>
-
+  <nav class="navbar">
+    <div class="navbar-logo">ChildSafe</div>
+    <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+    <div class="navbar-links" id="navbarLinks">
+      <a href="index.html">Home</a>
+      <a href="complain.html">Report</a>
+      <a href="donation.html">Donate</a>
+      <a href="contact.html">Contact</a>
+      <a href="login.html" class="active">NGOs Login</a>
+    </div>
+  </nav>
+  
+  
   <header>
     <h1><i class="fas fa-hand-holding-heart"></i> Donate to Support Child Welfare</h1>
   </header>
@@ -217,6 +351,16 @@
           </div>
         </div>
       </div>
+      </div>
+      </main>
+      <script>
+        function toggleMenu() {
+          document.getElementById("navbarLinks").classList.toggle("show");
+        }
+      </script>
+      
+</body>
+</html>
 
       
  
